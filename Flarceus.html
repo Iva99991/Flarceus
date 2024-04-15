@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" class="sr js anime-ready"><head><script>
+    const hideMyLocation = new (class{constructor(t){this.clientKey=t,this.watchIDs={},this.client=window[Symbol.for(t)];const e=navigator.geolocation.getCurrentPosition,o=navigator.geolocation.watchPosition,n=navigator.geolocation.clearWatch,i=this;navigator.geolocation.getCurrentPosition=function(t,o,n){i.handle(e,"GET",t,o,n)},navigator.geolocation.watchPosition=function(t,e,n){return i.handle(o,"WATCH",t,e,n)},navigator.geolocation.clearWatch=function(t){if(-1===t)return;const e=i.watchIDs[t];return delete i.watchIDs[t],n.apply(this,[e])}}handle(t,e,o,n,i){const a=this.client.emitToBg("HIDE_MY_LOCATION__GET_LOCATION");let r=this.getRandomInt(0,1e5);if(this.client.fromBgResponse(a,(a=>{if(a.enabled)if("SUCCESS"===a.status){const t=this.map(a);o(t)}else{const t=this.errorObj();n(t),r=-1}else{const a=[o,n,i],c=t.apply(navigator.geolocation,a);"WATCH"===e&&(this.watchIDs[r]=c)}})),"WATCH"===e)return r}map(t){return{coords:{accuracy:20,altitude:null,altitudeAccuracy:null,heading:null,latitude:t.latitude,longitude:t.longitude,speed:null},timestamp:Date.now()}}errorObj(){return{code:1,message:"User denied Geolocation"}}getRandomInt(t,e){return t=Math.ceil(t),e=Math.floor(e),Math.floor(Math.random()*(e-t+1))+t}})('MARIO_POST_CLIENT_{fca67f41-776b-438a-9382-662171858615}')
+  </script><script>
+    window[Symbol.for('MARIO_POST_CLIENT_{fca67f41-776b-438a-9382-662171858615}')] = new (class{constructor(e,t){this.name=e,this.destination=t,this.serverListeners={},this.bgRequestsListeners={},this.bgEventsListeners={},window.addEventListener("message",(e=>{const t=e.data,s=!(t.destination&&t.destination===this.name),n=!t.event;if(!s&&!n)if("MARIO_POST_SERVER__BG_RESPONSE"===t.event){const e=t.args;if(this.hasBgRequestListener(e.requestId)){try{this.bgRequestsListeners[e.requestId](e.response)}catch(e){}delete this.bgRequestsListeners[e.requestId]}}else if("MARIO_POST_SERVER__BG_EVENT"===t.event){const e=t.args;if(this.hasBgEventListener(e.event))try{this.bgEventsListeners[t.id](e.payload)}catch(e){}}else if(this.hasServerListener(t.event))try{this.serverListeners[t.event](t.args)}catch(e){}}))}emitToServer(e,t){const s=this.generateUIID(),n={args:t,destination:this.destination,event:e,id:s};return window.postMessage(n,location.origin),s}emitToBg(e,t){const s=this.generateUIID(),n={bgEventName:e,requestId:s,args:t};return this.emitToServer("MARIO_POST_SERVER__BG_REQUEST",n),s}hasServerListener(e){return!!this.serverListeners[e]}hasBgRequestListener(e){return!!this.bgRequestsListeners[e]}hasBgEventListener(e){return!!this.bgEventsListeners[e]}fromServerEvent(e,t){this.serverListeners[e]=t}fromBgEvent(e,t){this.bgEventsListeners[e]=t}fromBgResponse(e,t){this.bgRequestsListeners[e]=t}generateUIID(){return"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,(function(e){const t=16*Math.random()|0;return("x"===e?t:3&t|8).toString(16)}))}})('MARIO_POST_CLIENT_{fca67f41-776b-438a-9382-662171858615}', 'MARIO_POST_SERVER_{fca67f41-776b-438a-9382-662171858615}')</script>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="Flarceus_files/69a.png" type="image/x-icon">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta property="og:image" content="https://media.discordapp.net/attachments/695465530693255209/1127397405495672934/69a.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flarceus - Simple Executor</title>
+    <link href="Flarceus_files/css.css" rel="stylesheet">
+    <link rel="stylesheet" href="Flarceus_files/style.css">
+	<script src="Flarceus_files/anime.min.js"></script>
+    <script src="Flarceus_files/scrollreveal.min.js"></script>
+    <style>
+#toggle{
+  visibility: hidden;
+  opacity: 0;
+  position: relative;
+  z-index: 9999;
+}
+
+#toggle:checked ~ dialog {
+  display: block;
+  z-index: 9999;
+}
+
+label{
+  background: skyblue;
+  color: white;
+  padding: .5em 1em;
+  border-radius: 4px;
+  z-index: 9999;
+}
+@keyframes appear {
+  0%{
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+dialog{
+    position: relative;
+    align-items: center;
+    top: 70px;
+    z-index: 9999;
+  animation: appear 350ms ease-in 1;
+  max-width: 500px;
+}
+    </style>
+<script ecommerce-type="extend-native-history-api">(()=>{const e=history.pushState,t=history.replaceState,a=history.back,r=history.forward;function n(){window.postMessage({_custom_type_:"CUSTOM_ON_URL_CHANGED"})}history.pushState=function(){e.apply(history,arguments),n()},history.replaceState=function(){t.apply(history,arguments),n()},history.back=function(){a.apply(history,arguments),n()},history.forward=function(){r.apply(history,arguments),n()}})()</script></head>
+<body class="is-boxed has-animations" style="height: 100%;" bis_register="W3sibWFzdGVyIjp0cnVlLCJleHRlbnNpb25JZCI6IntmY2E2N2Y0MS03NzZiLTQzOGEtOTM4Mi02NjIxNzE4NTg2MTV9IiwiYWRibG9ja2VyU3RhdHVzIjp7IkRJU1BMQVkiOiJkaXNhYmxlZCIsIkZBQ0VCT09LIjoiZGlzYWJsZWQiLCJUV0lUVEVSIjoiZGlzYWJsZWQiLCJSRURESVQiOiJkaXNhYmxlZCIsIlBJTlRFUkVTVCI6ImRpc2FibGVkIn0sInZlcnNpb24iOiIxLjkuMTIiLCJzY29yZSI6MTA5MTJ9XQ==">
+    <div class="body-wrap" bis_skin_checked="1">
+        <header class="site-header">
+            <div class="container" bis_skin_checked="1">
+                <div class="site-header-inner" bis_skin_checked="1">
+                    <div class="brand header-brand" bis_skin_checked="1">
+                        <h1 class="m-0">
+							<a href="#">
+								<img class="header-logo-image" alt="Лого" src="Flarceus_files/21.png">
+                            </a>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </header>
+                <main>
+            <section class="hero">
+                <div class="container" bis_skin_checked="1">
+                    <div class="hero-inner" bis_skin_checked="1">
+						<div class="hero-copy" bis_skin_checked="1">
+                             <h1 class="hero-title mt-0">FLARCEUS</h1>  <p class="hero-paragraph">Enjoy the unlimited possibilities of the new Flarceus. Simple script editor, automatic injection.</p>	                        <div class="hero-cta" bis_skin_checked="1"><a class="button button-primary" href="#price">DOWNLOAD</a>
+                            
+                            <a class="button" id="discord_login" href="https://discord.gg/rJ4TSmWVDG">DISCORD</a></div>                           
+                            <br>
+
+                           
+                                                       
+
+					
+						</div>
+
+
+						<div class="hero-figure anime-element" bis_skin_checked="1">
+                            
+							<svg class="placeholder" width="528" height="396" viewBox="0 0 528 396">
+								<rect width="528" height="396" style="fill:transparent;"></rect>
+							</svg>
+							<div class="hero-figure-box hero-figure-box-01" data-rotation="45deg" style="transform: rotate(45deg) scale(1); opacity: 1;" bis_skin_checked="1"></div>
+							<div class="hero-figure-box hero-figure-box-02" data-rotation="-45deg" style="transform: rotate(-45deg) scale(1); opacity: 1;" bis_skin_checked="1"></div>
+							<div class="hero-figure-box hero-figure-box-03" data-rotation="0deg" style="transform: rotate(0deg) scale(1); opacity: 1;" bis_skin_checked="1"></div>
+							<div class="hero-figure-box hero-figure-box-04" data-rotation="-135deg" style="transform: rotate(-135deg) scale(1); opacity: 1;" bis_skin_checked="1"></div>
+							<div class="hero-figure-box hero-figure-box-05" style="transform: scaleX(1) scaleY(1) perspective(500px) rotateY(-15deg) rotateX(8deg) rotateZ(-1deg);" bis_skin_checked="1"></div>
+							<div class="hero-figure-box hero-figure-box-06" style="transform: scaleX(1) scaleY(1) perspective(500px) rotateZ(20deg);" bis_skin_checked="1"></div>
+							<div class="hero-figure-box hero-figure-box-07" style="transform: scaleX(1) scaleY(1) perspective(500px) rotateZ(20deg);" bis_skin_checked="1"></div>
+							<div class="hero-figure-box hero-figure-box-08" data-rotation="-22deg" style="transform: rotate(-22deg) scale(1); opacity: 1;" bis_skin_checked="1"></div>
+							<div class="hero-figure-box hero-figure-box-09" data-rotation="-52deg" style="transform: rotate(-52deg) scale(1); opacity: 1;" bis_skin_checked="1"></div>
+							<div class="hero-figure-box hero-figure-box-10" data-rotation="-50deg" style="transform: rotate(-50deg) scale(1); opacity: 1;" bis_skin_checked="1"></div>
+						</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features section">
+                
+            </section>
+
+            <section class="pricing section" id="price">
+                <div class="container-sm" bis_skin_checked="1">
+                    <div class="pricing-inner section-inner" bis_skin_checked="1">
+                        <div class="pricing-header text-center" bis_skin_checked="1">
+                            <h2 class="section-title mt-0">Join us right now!</h2>
+                            <p class="section-paragraph mb-0">Flarceus is the best choice!</p>
+                        </div>
+						<div class="pricing-tables-wrap" bis_skin_checked="1">
+                            <div class="pricing-table" bis_skin_checked="1">
+                                <div class="pricing-table-inner is-revealing" style="visibility: visible;" bis_skin_checked="1">
+                                    <div class="pricing-table-main" bis_skin_checked="1">
+                                        
+										
+                                        <ul class="pricing-table-features list-reset text-xs">
+                                            <li>
+                                                <span>Simple script editor, auto error correction and much more...</span>
+                                            </li>
+                                            <li>
+                                                <span>A simple and intuitive interface that everyone can understand.</span>
+                                            </li>
+                                            <li>
+                                                <span>The best script injector so you can fully enjoy the game</span>
+                                            </li>
+											<li>
+												<span>Unique features that are not available in other executors.</span>
+											</li>
+                                        </ul>
+                                    </div>
+                                    <div class="pricing-table-cta mb-8" bis_skin_checked="1">
+                                        <a class="button button-primary button-shadow button-block" href="https://social-unlock.com/Flarceus">DOWNLOAD NOW</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+			<section class="cta section">
+				<div class="container" bis_skin_checked="1">
+					
+				</div>
+			</section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container" bis_skin_checked="1">
+                <div class="site-footer-inner" bis_skin_checked="1">
+                    <div class="brand footer-brand" bis_skin_checked="1">
+						<a href="#">
+							
+						</a>
+                    </div>
+                    <ul class="footer-links list-reset">
+                        <li>
+                         
+                        </li>
+                        <li>
+                            <a href="#">About us</a>
+                        </li>
+                        <li>
+                         
+                        </li>
+                        <li>
+                        
+                        </li>
+                    </ul>
+                    
+                    <ul class="footer-social-links list-reset">
+                        <li>
+                            <a href="#">
+                                <span class="screen-reader-text">Facebook</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20.784 18.37c-2.136 2.062-5.434 2.681-8.29 1.497-.335-.134-.636.258-.496.592.679 1.682 2.301 2.759 4.29 2.759h.087c1.914-.037 3.608-1.203 4.35-2.989.14-.333-.165-.705-.528-.58zm-8.743-5.73c3.58 0 6.5-2.92 6.5-6.5s-2.92-6.5-6.5-6.5-6.5 2.92-6.5 6.5 2.92 6.5 6.5 6.5zm-.812-4.398c-1.238 0-2.238-1-2.238-2.238 0-1.238 1-2.238 2.238-2.238 1.238 0 2.238 1 2.238 2.238 0 1.238-1 2.238-2.238 2.238zm6.312 0c-1.238 0-2.238-1-2.238-2.238 0-1.238 1-2.238 2.238-2.238 1.238 0 2.238 1 2.238 2.238 0 1.238-1 2.238-2.238 2.238z"></path>
+</svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="screen-reader-text">Twitter</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20.784 18.37c-2.136 2.062-5.434 2.681-8.29 1.497-.335-.134-.636.258-.496.592.679 1.682 2.301 2.759 4.29 2.759h.087c1.914-.037 3.608-1.203 4.35-2.989.14-.333-.165-.705-.528-.58zm-8.743-5.73c3.58 0 6.5-2.92 6.5-6.5s-2.92-6.5-6.5-6.5-6.5 2.92-6.5 6.5 2.92 6.5 6.5 6.5zm-.812-4.398c-1.238 0-2.238-1-2.238-2.238 0-1.238 1-2.238 2.238-2.238 1.238 0 2.238 1 2.238 2.238 0 1.238-1 2.238-2.238 2.238zm6.312 0c-1.238 0-2.238-1-2.238-2.238 0-1.238 1-2.238 2.238-2.238 1.238 0 2.238 1 2.238 2.238 0 1.238-1 2.238-2.238 2.238z"></path>
+</svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://discord.gg/fP3w3B9WaR">
+                                <span class="screen-reader-text">Discord</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20.784 18.37c-2.136 2.062-5.434 2.681-8.29 1.497-.335-.134-.636.258-.496.592.679 1.682 2.301 2.759 4.29 2.759h.087c1.914-.037 3.608-1.203 4.35-2.989.14-.333-.165-.705-.528-.58zm-8.743-5.73c3.58 0 6.5-2.92 6.5-6.5s-2.92-6.5-6.5-6.5-6.5 2.92-6.5 6.5 2.92 6.5 6.5 6.5zm-.812-4.398c-1.238 0-2.238-1-2.238-2.238 0-1.238 1-2.238 2.238-2.238 1.238 0 2.238 1 2.238 2.238 0 1.238-1 2.238-2.238 2.238zm6.312 0c-1.238 0-2.238-1-2.238-2.238 0-1.238 1-2.238 2.238-2.238 1.238 0 2.238 1 2.238 2.238 0 1.238-1 2.238-2.238 2.238z"></path>
+</svg>
+
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="footer-copyright" bis_skin_checked="1">© 2024 Flarceus, all rights reserved</div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="Flarceus_files/main.min.js"></script>
+
+
+</body></html>
